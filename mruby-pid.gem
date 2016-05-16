@@ -1,0 +1,6 @@
+name: mruby-pid
+description: PID class
+author: Yuhei Okazaki
+website: https://github.com/yuuu/mruby-pid
+protocol: git
+repository: https://github.com/yuuu/mruby-pid.git
