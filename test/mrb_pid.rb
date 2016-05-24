@@ -81,8 +81,8 @@ end
 
 assert("PID#calculate") do
   @pid = PID.new(target:50, kp:1, ki:2, kd:3, sampling:4, max:100, min:-100)
-  assert_equal(2 + 0 + 16, @pid.calculate(52))
-  assert_equal(6 + 3 + 64, @pid.calculate(56))
-  assert_equal(-2 - 6 + 48, @pid.calculate(48))
+  assert_equal(-(2 + 0 + 16), @pid.calculate(52))
+  assert_equal(-(6 + 3 + 64), @pid.calculate(56))
+  assert_equal(-(-2 - 6 + 48), @pid.calculate(48))
 end
 

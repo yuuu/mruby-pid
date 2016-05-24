@@ -226,7 +226,7 @@ static mrb_float mrb_pid_calculate_p(mrb_state *mrb, mrb_pid_data *data, mrb_flo
 {
 	mrb_float result;
 
-	result = data->kp * (input - data->target);
+	result = data->kp * (data->target - input);
 
   return result;
 }
@@ -235,7 +235,7 @@ static mrb_float mrb_pid_calculate_i(mrb_state *mrb, mrb_pid_data *data, mrb_flo
 {
 	mrb_float result;
 
-	data->integral += ((input - data->target) * data->sampling);
+	data->integral += ((data->target - input) * data->sampling);
 	result = data->ki * data->integral;
 
   return result;
@@ -247,7 +247,7 @@ static mrb_float mrb_pid_calculate_d(mrb_state *mrb, mrb_pid_data *data, mrb_flo
 
 	result = 0.0;
 	if(data->first != TRUE) {
-		result = data->kd * ((input - data->last_input) / data->sampling);
+		result = data->kd * ((data->last_input - input) / data->sampling);
 	}
 	data->last_input = input;
 	data->first = FALSE;
